@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-19 - Gestion Binôme</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .header { background: #6554C0; color: white; padding: 20px; border-radius: 8px; }
+        .card { background: #f4f5f7; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #6554C0; }
+        .badge { display: inline-block; padding: 5px 10px; margin: 5px; border-radius: 3px; font-size: 12px; }
+        .scrum { background: #6554C0; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+        button { padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; }
+        .solo { background: #0052CC; color: white; }
+        .binome { background: #36B37E; color: white; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>👥 Configuration du Projet</h1>
+        <p>SCRUM-19 : Choix binôme ou projet solo</p>
+    </div>
+    
+    <div class="info" style="background: #f4f5f7; padding: 15px; border-radius: 5px;">
+        <span class="badge scrum">SCRUM-19</span>
+        <span class="badge competence">#competence-SI7</span>
+        <span class="badge livrable">@livrable-code</span>
+    </div>
+    
+    <div class="card">
+        <h3>Type de projet</h3>
+        <button class="solo">Projet Solo</button>
+        <button class="binome">Projet en Binôme</button>
+    </div>
+    
+    <div class="card">
+        <h3>Inviter un coéquipier</h3>
+        <input type="email" placeholder="email@etudiant.univ.fr" style="padding: 10px; width: 300px;">
+        <button style="background: #0052CC; color: white;">Envoyer invitation</button>
+    </div>
+    
+    <div class="card">
+        <h3>Statut actuel</h3>
+        <p>En attente de confirmation...</p>
+    </div>
+    
+    <p><small>🎓 GJ-ATM : #competence-SI7 - Gestion de projet et travail en équipe</small></p>
+</body>
+</html>
