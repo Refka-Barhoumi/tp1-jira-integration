@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-17 - Authentification Étudiant</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .header { background: #0052CC; color: white; padding: 20px; border-radius: 8px; }
+        .info { background: #f4f5f7; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .badge { display: inline-block; padding: 5px 10px; margin: 5px; border-radius: 3px; font-size: 12px; }
+        .scrum { background: #0052CC; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔐 Page d'Authentification</h1>
+        <p>SCRUM-17 : Accès espace étudiant via email professionnel</p>
+    </div>
+    
+    <div class="info">
+        <h3>📋 Informations GJ-ATM</h3>
+        <span class="badge scrum">SCRUM-17</span>
+        <span class="badge competence">#competence-SI6</span>
+        <span class="badge livrable">@livrable-code</span>
+    </div>
+    
+    <form>
+        <label>Email universitaire :</label><br>
+        <input type="email" placeholder="prenom.nom@etudiant.univ.fr"><br><br>
+        
+        <label>Mot de passe :</label><br>
+        <input type="password" placeholder="••••••••"><br><br>
+        
+        <button type="submit">Se connecter</button>
+        <p><a href="#">Mot de passe oublié ?</a></p>
+    </form>
+    
+    <p><small>Innovation GJ-ATM : Lien Jira-GitHub traçable</small></p>
+</body>
+</html>
