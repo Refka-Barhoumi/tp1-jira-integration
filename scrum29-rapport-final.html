@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-29 - Dépôt Rapport Final</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .alert-important {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 25px;
+        }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { color: #f5576c; font-size: 28px; margin-bottom: 10px; }
+        .badge { display: inline-block; padding: 6px 15px; margin: 5px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .scrum { background: #f5576c; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+        .form-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 8px; color: #333; font-weight: 600; }
+        input, textarea { width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 15px; }
+        .file-upload {
+            border: 3px dashed #f5576c;
+            padding: 50px;
+            text-align: center;
+            border-radius: 10px;
+            background: #fff5f7;
+        }
+        .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin: 20px 0; }
+        .checkbox-group input { width: auto; margin-top: 5px; }
+        button { width: 100%; padding: 18px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: 600; }
+        .footer { text-align: center; margin-top: 30px; color: rgba(255,255,255,0.9); font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="alert-important">
+            <h3>⚠️ Étape Finale Importante</h3>
+            <p>Le dépôt du rapport final est obligatoire pour la soutenance. Une fois déposé, le document ne peut plus être modifié.</p>
+        </div>
+        
+        <div class="form-container">
+            <div class="header">
+                <h1>📑 Dépôt du Rapport Final</h1>
+                <p>SCRUM-29 : Préparation à la soutenance</p>
+                <div>
+                    <span class="badge scrum">SCRUM-29</span>
+                    <span class="badge competence">#competence-SI8</span>
+                    <span class="badge livrable">@livrable-rapport</span>
+                </div>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label>Titre final du projet *</label>
+                    <input type="text" placeholder="Titre définitif du projet PFE" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Résumé du projet (abstract) *</label>
+                    <textarea rows="4" placeholder="Résumé en 200 mots maximum..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Mots-clés *</label>
+                    <input type="text" placeholder="Ex: Java, Spring Boot, Microservices, Sécurité" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Rapport final (PDF) *</label>
+                    <div class="file-upload">
+                        <p style="font-size: 48px;">📄</p>
+                        <p>Déposez votre rapport final ici</p>
+                        <p style="color: #666; font-size: 13px;">Format PDF uniquement - Taille max 20Mo</p>
+                        <input type="file" accept=".pdf" required style="margin-top: 15px;">
+                    </div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="certify" required>
+                    <label for="certify" style="margin-bottom: 0;">
+                        Je certifie que ce rapport est original, qu'il ne contient pas de plagiat, et que j'ai respecté les règles de l'établissement concernant l'honnêteté académique.
+                    </label>
+                </div>
+                
+                <button type="submit">🚀 Déposer le rapport final</button>
+            </form>
+        </div>
+        
+        <div class="footer">
+            🎓 Innovation GJ-ATM | #competence-SI8 @livrable-rapport
+        </div>
+    </div>
+</body>
+</html>
