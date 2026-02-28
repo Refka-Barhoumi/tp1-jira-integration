@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-41 - Dashboard Tuteur Personnalisable</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 40px;
+        }
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 { font-size: 26px; }
+        .badge { padding: 5px 12px; margin: 3px; border-radius: 15px; font-size: 11px; font-weight: bold; }
+        .scrum { background: rgba(255,255,255,0.2); color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+        
+        .container { max-width: 1400px; margin: 30px auto; padding: 0 40px; }
+        
+        .customization-bar {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .customization-bar h3 { color: #333; font-size: 16px; }
+        .widget-toggles { display: flex; gap: 10px; }
+        .toggle {
+            padding: 8px 16px;
+            background: #f0f0f0;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        .toggle.active { background: #667eea; color: white; border-color: #667eea; }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .widget {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .widget h2 { 
+            font-size: 18px; 
+            color: #333; 
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .project-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 12px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        .project-avatar {
+            width: 45px; height: 45px; border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: bold; margin-right: 15px;
+        }
+        .project-info h4 { color: #333; margin-bottom: 5px; font-size: 15px; }
+        .project-info p { color: #666; font-size: 13px; }
+        .project-status {
+            margin-left: auto;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .status-green { background: #d4edda; color: #155724; }
+        .status-orange { background: #fff3cd; color: #856404; }
+        
+        .cr-item {
+            display: flex;
+            align-items: center;
+            padding: 18px;
+            margin-bottom: 12px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .cr-icon { font-size: 28px; margin-right: 15px; }
+        .cr-info { flex: 1; }
+        .cr-info h4 { color: #333; font-size: 15px; margin-bottom: 5px; }
+        .cr-info p { color: #666; font-size: 13px; }
+        .cr-action {
+            color: #667eea;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .stats-widget { text-align: center; }
+        .stats-number { font-size: 48px; font-weight: bold; color: #667eea; }
+        .stats-label { color: #666; margin-top: 10px; }
+        
+        .footer { text-align: center; padding: 40px; color: #999; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div>
+                <h1>👨‍🏫 Mon Espace Tuteur</h1>
+                <p style="opacity: 0.8; margin-top: 5px;">Personnalisable selon mes besoins</p>
+            </div>
+            <div>
+                <span class="badge scrum">SCRUM-41</span>
+                <span class="badge competence">#competence-SI6</span>
+                <span class="badge livrable">@livrable-code</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="customization-bar">
+            <h3>⚙️ Personnaliser l'affichage</h3>
+            <div class="widget-toggles">
+                <span class="toggle active">Mes projets</span>
+                <span class="toggle active">CR à valider</span>
+                <span class="toggle">Calendrier</span>
+                <span class="toggle active">Statistiques</span>
+                <span class="toggle">Messages</span>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="widget">
+                <h2>📁 Mes Projets Assignés (5)</h2>
+                <div class="project-item">
+                    <div class="project-avatar">AB</div>
+                    <div class="project-info">
+                        <h4>Système PFE IA</h4>
+                        <p>Ahmed Ben Ali, Maysa Trabelsi</p>
+                    </div>
+                    <span class="project-status status-green">En cours</span>
+                </div>
+                <div class="project-item">
+                    <div class="project-avatar">KL</div>
+                    <div class="project-info">
+                        <h4>App Médicale</h4>
+                        <p>Karim Louati</p>
+                    </div>
+                    <span class="project-status status-orange">Attente CR</span>
+                </div>
+                <div class="project-item">
+                    <div class="project-avatar">OS</div>
+                    <div class="project-info">
+                        <h4>Plateforme Réservation</h4>
+                        <p>Omar Sassi</p>
+                    </div>
+                    <span class="project-status status-green">En cours</span>
+                </div>
+            </div>
+
+            <div class="widget">
+                <h2>📝 CR en Attente (3)</h2>
+                <div class="cr-item">
+                    <span class="cr-icon">📄</span>
+                    <div class="cr-info">
+                        <h4>CR #3 - Sprint 2</h4>
+                        <p>Système PFE IA • Déposé il y a 2h</p>
+                    </div>
+                    <span class="cr-action">Valider →</span>
+                </div>
+                <div class="cr-item">
+                    <span class="cr-icon">📄</span>
+                    <div class="cr-info">
+                        <h4>CR #2 - Sprint 1</h4>
+                        <p>App Médicale • En retard</p>
+                    </div>
+                    <span class="cr-action">Valider →</span>
+                </div>
+                <div class="cr-item">
+                    <span class="cr-icon">📄</span>
+                    <div class="cr-info">
+                        <h4>CR #4 - Sprint 2</h4>
+                        <p>Plateforme Réservation • Hier</p>
+                    </div>
+                    <span class="cr-action">Valider →</span>
+                </div>
+            </div>
+
+            <div class="widget stats-widget">
+                <h2>📊 Mes Statistiques</h2>
+                <div style="margin: 30px 0;">
+                    <div class="stats-number">87%</div>
+                    <div class="stats-label">Taux de validation</div>
+                </div>
+                <div style="margin: 30px 0;">
+                    <div class="stats-number">4.2/5</div>
+                    <div class="stats-label">Satisfaction étudiants</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        🎓 Innovation GJ-ATM | Dashboard personnalisable | #competence-SI6 @livrable-code
+    </div>
+</body>
+</html>
