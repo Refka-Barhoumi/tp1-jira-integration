@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-21 - Soumission Proposition PFE</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 30px auto; padding: 20px; background: #f4f5f7; }
+        .header { background: #00875A; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .form-section { background: white; padding: 25px; margin: 15px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        label { display: block; margin: 15px 0 5px; font-weight: bold; }
+        input, textarea, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        textarea { min-height: 100px; resize: vertical; }
+        button { background: #00875A; color: white; padding: 15px 40px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .badge { display: inline-block; padding: 5px 10px; margin: 5px; border-radius: 3px; font-size: 12px; }
+        .scrum { background: #00875A; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📝 Soumission de Proposition PFE</h1>
+        <p>SCRUM-21 : Formulaire de proposition de projet</p>
+    </div>
+    
+    <div style="background: white; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        <span class="badge scrum">SCRUM-21</span>
+        <span class="badge competence">#competence-SI8</span>
+        <span class="badge livrable">@livrable-code</span>
+    </div>
+    
+    <form>
+        <div class="form-section">
+            <h3>Informations générales</h3>
+            
+            <label>Type de projet :</label>
+            <select>
+                <option>Projet académique</option>
+                <option>Projet en entreprise</option>
+            </select>
+            
+            <label>Titre du projet :</label>
+            <input type="text" placeholder="Titre concis et descriptif">
+            
+            <label>Thème :</label>
+            <input type="text" placeholder="Ex: Intelligence Artificielle, Blockchain...">
+        </div>
+        
+        <div class="form-section">
+            <h3>Description détaillée</h3>
+            
+            <label>Objectifs :</label>
+            <textarea placeholder="Décrivez les objectifs SMART de votre projet..."></textarea>
+            
+            <label>Technologies envisagées :</label>
+            <textarea placeholder="Java, Spring Boot, Angular, PostgreSQL..."></textarea>
+        </div>
+        
+        <div style="text-align: center;">
+            <button type="submit">Soumettre la proposition</button>
+            <button type="button" style="background: #999; margin-left: 10px;">Enregistrer brouillon</button>
+        </div>
+    </form>
+    
+    <p style="text-align: center; margin-top: 30px; color: #666;">
+        🎓 GJ-ATM : Traçabilité académique complète | #competence-SI8
+    </p>
+</body>
+</html>

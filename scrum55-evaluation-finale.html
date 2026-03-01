@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-55 - Évaluation Finale</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #2c3e50 0%, #e74c3c 100%);
+            min-height: 100vh;
+            padding: 40px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .evaluation-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { color: #e74c3c; font-size: 28px; margin-bottom: 10px; }
+        .badge { display: inline-block; padding: 6px 15px; margin: 5px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .scrum { background: #e74c3c; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+        
+        .alert-final {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 30px;
+        }
+        .alert-final h3 { color: #856404; margin-bottom: 10px; }
+        .alert-final p { color: #856404; font-size: 14px; }
+        
+        .project-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 5px solid #e74c3c;
+        }
+        .project-info h3 { color: #e74c3c; margin-bottom: 15px; }
+        .project-info p { margin-bottom: 8px; color: #555; }
+        
+        .grades-summary {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .grade-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .grade-box h4 { color: #333; font-size: 15px; }
+        .grade-value { 
+            font-size: 24px; 
+            font-weight: bold; 
+            color: #667eea;
+        }
+        
+        .final-grade-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #e74c3c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .final-grade-section h3 { font-size: 20px; margin-bottom: 15px; }
+        .final-grade-input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .final-grade-input input {
+            width: 120px;
+            padding: 15px;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+        }
+        .final-grade-input span { font-size: 24px; }
+        
+        .decision-section {
+            margin-bottom: 30px;
+        }
+        .decision-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .decision-options {
+            display: flex;
+            gap: 15px;
+        }
+        .decision-btn {
+            flex: 1;
+            padding: 20px;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .decision-btn.selected {
+            border-color: #2ecc71;
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .comment-section {
+            margin-bottom: 30px;
+        }
+        .comment-section label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .comment-section textarea {
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 22px;
+            background: linear-gradient(135deg, #2c3e50 0%, #e74c3c 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .footer { text-align: center; margin-top: 30px; color: rgba(255,255,255,0.9); font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="evaluation-card">
+            <div class="header">
+                <h1>🏁 Évaluation Finale</h1>
+                <p>Clôturer le projet avec la note définitive</p>
+                <div style="margin-top: 15px;">
+                    <span class="badge scrum">SCRUM-55</span>
+                    <span class="badge competence">#competence-SI8</span>
+                    <span class="badge livrable">@livrable-code</span>
+                </div>
+            </div>
+            
+            <div class="alert-final">
+                <h3>⚠️ Action irréversible</h3>
+                <p>Une fois l'évaluation finale soumise, elle ne pourra plus être modifiée. Vérifiez attentivement toutes les notes avant de confirmer.</p>
+            </div>
+            
+            <div class="project-info">
+                <h3>📋 Projet à clôturer</h3>
+                <p><strong>Titre :</strong> Système de Gestion PFE avec IA</p>
+                <p><strong>Étudiants :</strong> Ahmed Ben Ali, Maysa Trabelsi</p>
+                <p><strong>Soutenance :</strong> 15/07/2024</p>
+            </div>
+            
+            <div class="grades-summary">
+                <div class="grade-box">
+                    <h4>📝 Rapport final</h4>
+                    <div class="grade-value">14/20</div>
+                </div>
+                <div class="grade-box">
+                    <h4>🎤 Soutenance</h4>
+                    <div class="grade-value">16/20</div>
+                </div>
+                <div class="grade-box">
+                    <h4>👥 Implication</h4>
+                    <div class="grade-value">18/20</div>
+                </div>
+                <div class="grade-box">
+                    <h4>💻 Prototype/Démo</h4>
+                    <div class="grade-value">15/20</div>
+                </div>
+            </div>
+            
+            <div class="final-grade-section">
+                <h3>Note finale calculée</h3>
+                <div class="final-grade-input">
+                    <input type="number" min="0" max="20" step="0.25" value="15.75">
+                    <span>/ 20</span>
+                </div>
+            </div>
+            
+            <div class="decision-section">
+                <h3>✅ Décision finale</h3>
+                <div class="decision-options">
+                    <button class="decision-btn selected">🎓 Validé</button>
+                    <button class="decision-btn">📝 Validé avec réserve</button>
+                    <button class="decision-btn">❌ Non validé</button>
+                </div>
+            </div>
+            
+            <div class="comment-section">
+                <label for="final-comment">💬 Appréciation finale</label>
+                <textarea id="final-comment" placeholder="Synthèse de l'évaluation globale du projet...">Excellent projet démontrant une maîtrise technique avancée de l'IA et du développement web. La solution proposée est innovante et répond parfaitement au besoin. Les étudiants ont fait preuve d'un excellent esprit d'équipe et d'une grande autonomie. Félicitations pour cette réalisation de qualité professionnelle.</textarea>
+            </div>
+            
+            <button class="submit-btn">🔒 Clôturer l'évaluation définitive</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        🎓 Innovation GJ-ATM | #competence-SI8 @livrable-code
+    </div>
+</body>
+</html>
