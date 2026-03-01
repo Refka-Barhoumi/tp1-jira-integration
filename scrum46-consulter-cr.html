@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-46 - Consulter Comptes Rendus</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #f5f7fa;
+            min-height: 100vh;
+            padding: 40px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .header h1 { font-size: 32px; margin-bottom: 10px; }
+        .badge { padding: 6px 15px; margin: 5px; border-radius: 20px; font-size: 12px; font-weight: bold; display: inline-block; }
+        .scrum { background: rgba(255,255,255,0.2); color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+        
+        .filters {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .filters select, .filters input {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .filters input { flex: 1; }
+        
+        .cr-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #667eea;
+        }
+        .cr-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .cr-header h3 { color: #333; font-size: 20px; }
+        .cr-status {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status-deposé { background: #d4edda; color: #155724; }
+        .status-en-retard { background: #f8d7da; color: #721c24; }
+        .status-validé { background: #fff3cd; color: #856404; }
+        
+        .cr-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        .cr-meta span { display: flex; align-items: center; gap: 8px; }
+        
+        .cr-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .cr-content h4 { color: #667eea; margin-bottom: 10px; font-size: 16px; }
+        .cr-content p { color: #555; line-height: 1.6; }
+        
+        .cr-actions {
+            display: flex;
+            gap: 15px;
+        }
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-success { background: #2ecc71; color: white; }
+        .btn-warning { background: #f39c12; color: white; }
+        
+        .footer { text-align: center; margin-top: 40px; color: #999; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Consulter les Comptes Rendus</h1>
+            <p>Suivi de l'évolution des projets par les comptes rendus étudiants</p>
+            <div style="margin-top: 20px;">
+                <span class="badge scrum">SCRUM-46</span>
+                <span class="badge competence">#competence-SI7</span>
+                <span class="badge livrable">@livrable-code</span>
+            </div>
+        </div>
+
+        <div class="filters">
+            <select>
+                <option>Tous les projets</option>
+                <option>Système PFE IA</option>
+                <option>App Médicale</option>
+                <option>Plateforme Réservation</option>
+            </select>
+            <select>
+                <option>Tous les étudiants</option>
+                <option>Ahmed Ben Ali</option>
+                <option>Maysa Trabelsi</option>
+                <option>Karim Louati</option>
+            </select>
+            <input type="text" placeholder="🔍 Rechercher par mot-clé...">
+        </div>
+
+        <div class="cr-card">
+            <div class="cr-header">
+                <div>
+                    <h3>📄 Compte Rendu #3 - Sprint 2</h3>
+                    <p style="color: #666; font-size: 14px; margin-top: 5px;">Projet : Système PFE IA</p>
+                </div>
+                <span class="cr-status status-deposé">✅ Déposé</span>
+            </div>
+            <div class="cr-meta">
+                <span>👤 Ahmed Ben Ali, Maysa Trabelsi</span>
+                <span>📅 Période : 15/01 - 28/01/2024</span>
+                <span>⏱️ Déposé il y a 2 heures</span>
+            </div>
+            <div class="cr-content">
+                <h4>📝 Travail réalisé</h4>
+                <p>Implémentation du module de matching IA entre tuteurs et étudiants. Intégration de l'API TensorFlow pour l'analyse des compétences. Tests unitaires réalisés avec 85% de couverture.</p>
+            </div>
+            <div class="cr-actions">
+                <button class="btn btn-primary">📥 Télécharger PDF</button>
+                <button class="btn btn-success">✓ Valider</button>
+                <button class="btn btn-warning">📝 Demander modifications</button>
+            </div>
+        </div>
+
+        <div class="cr-card">
+            <div class="cr-header">
+                <div>
+                    <h3>📄 Compte Rendu #2 - Sprint 1</h3>
+                    <p style="color: #666; font-size: 14px; margin-top: 5px;">Projet : App Médicale</p>
+                </div>
+                <span class="cr-status status-en-retard">⚠️ En retard</span>
+            </div>
+            <div class="cr-meta">
+                <span>👤 Karim Louati</span>
+                <span>📅 Période : 01/01 - 14/01/2024</span>
+                <span>⏱️ Attendu depuis 3 jours</span>
+            </div>
+            <div class="cr-content">
+                <h4>📝 Travail réalisé</h4>
+                <p><em>Aucun compte rendu déposé pour cette période.</em></p>
+            </div>
+            <div class="cr-actions">
+                <button class="btn btn-warning">📧 Envoyer rappel</button>
+            </div>
+        </div>
+
+        <div class="cr-card">
+            <div class="cr-header">
+                <div>
+                    <h3>📄 Compte Rendu #1 - Sprint 1</h3>
+                    <p style="color: #666; font-size: 14px; margin-top: 5px;">Projet : Système PFE IA</p>
+                </div>
+                <span class="cr-status status-validé">✓ Validé</span>
+            </div>
+            <div class="cr-meta">
+                <span>👤 Ahmed Ben Ali, Maysa Trabelsi</span>
+                <span>📅 Période : 01/01 - 14/01/2024</span>
+                <span>⏱️ Validé le 16/01/2024</span>
+            </div>
+            <div class="cr-content">
+                <h4>📝 Travail réalisé</h4>
+                <p>Analyse des besoins et conception de l'architecture. Mise en place de l'environnement de développement. Création des maquettes UI/UX.</p>
+                <p style="margin-top: 10px; color: #2ecc71;"><strong>✓ Commentaire tuteur :</strong> Excellent démarrage, continuez sur cette lancée !</p>
+            </div>
+            <div class="cr-actions">
+                <button class="btn btn-primary">📥 Télécharger PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        🎓 Innovation GJ-ATM | #competence-SI7 @livrable-code
+    </div>
+</body>
+</html>
