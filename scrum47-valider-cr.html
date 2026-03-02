@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-47 - Valider, Commenter ou Rejeter Compte Rendu</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .validation-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { color: #667eea; font-size: 28px; margin-bottom: 10px; }
+        .badge { display: inline-block; padding: 6px 15px; margin: 5px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .scrum { background: #667eea; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+        
+        .cr-summary {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+        .cr-summary h3 { color: #667eea; margin-bottom: 15px; font-size: 18px; }
+        .cr-summary p { margin-bottom: 8px; color: #555; font-size: 15px; }
+        
+        .action-section {
+            margin-bottom: 30px;
+        }
+        .action-section h3 { 
+            color: #333; 
+            margin-bottom: 20px; 
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .action-btn {
+            padding: 25px;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            background: white;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .action-btn:hover { transform: translateY(-3px); }
+        .action-btn.selected {
+            border-color: currentColor;
+            background: rgba(0,0,0,0.05);
+        }
+        .action-btn.validate { color: #2ecc71; }
+        .action-btn.comment { color: #f39c12; }
+        .action-btn.reject { color: #e74c3c; }
+        .action-btn .icon { font-size: 36px; margin-bottom: 10px; }
+        .action-btn h4 { font-size: 16px; margin-bottom: 5px; }
+        .action-btn p { font-size: 13px; color: #666; }
+        
+        .comment-section {
+            margin-bottom: 30px;
+        }
+        .comment-section label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+        }
+        .comment-section textarea {
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .footer { text-align: center; margin-top: 30px; color: rgba(255,255,255,0.9); font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="validation-card">
+            <div class="header">
+                <h1>✅ Valider, Commenter ou Rejeter</h1>
+                <p>Encadrement efficace des étudiants via les comptes rendus</p>
+                <div style="margin-top: 15px;">
+                    <span class="badge scrum">SCRUM-47</span>
+                    <span class="badge competence">#competence-SI7</span>
+                    <span class="badge livrable">@livrable-code</span>
+                </div>
+            </div>
+            
+            <div class="cr-summary">
+                <h3>📄 Compte Rendu à évaluer</h3>
+                <p><strong>Projet :</strong> Système de Gestion PFE avec IA</p>
+                <p><strong>Étudiants :</strong> Ahmed Ben Ali, Maysa Trabelsi</p>
+                <p><strong>CR #3 - Sprint 2</strong> | Période : 15/01 - 28/01/2024</p>
+                <p><strong>Travail réalisé :</strong> Implémentation du module de matching IA, intégration TensorFlow, tests unitaires (85% couverture)</p>
+            </div>
+            
+            <div class="action-section">
+                <h3>🎯 Choisir une action</h3>
+                <div class="action-buttons">
+                    <div class="action-btn validate selected">
