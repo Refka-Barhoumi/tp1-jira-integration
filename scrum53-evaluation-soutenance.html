@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-53 - Évaluation Soutenance</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #8e44ad 0%, #c0392b 100%);
+            min-height: 100vh;
+            padding: 40px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .evaluation-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { color: #8e44ad; font-size: 28px; margin-bottom: 10px; }
+        .badge { display: inline-block; padding: 6px 15px; margin: 5px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .scrum { background: #8e44ad; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+        
+        .soutenance-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 5px solid #8e44ad;
+        }
+        .soutenance-info h3 { color: #8e44ad; margin-bottom: 15px; }
+        .soutenance-info p { margin-bottom: 8px; color: #555; }
+        
+        .criteria-section { margin-bottom: 30px; }
+        .criteria-section h3 { 
+            color: #333; 
+            margin-bottom: 20px; 
+            font-size: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .criterion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .criterion-info h4 { color: #333; margin-bottom: 5px; }
+        .criterion-info p { color: #666; font-size: 13px; }
+        
+        .note-input {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .note-input input {
+            width: 80px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 18px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .note-input span { color: #666; font-size: 14px; }
+        
+        .appreciation-section {
+            margin-bottom: 30px;
+        }
+        .appreciation-section label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .appreciation-section textarea {
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .total-section {
+            background: linear-gradient(135deg, #8e44ad 0%, #c0392b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .total-section h3 { font-size: 20px; }
+        .total-note { font-size: 36px; font-weight: bold; }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #8e44ad 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .footer { text-align: center; margin-top: 30px; color: rgba(255,255,255,0.9); font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="evaluation-card">
+            <div class="header">
+                <h1>🎤 Évaluation de la Soutenance</h1>
+                <p>Évaluer la présentation orale du projet</p>
+                <div style="margin-top: 15px;">
+                    <span class="badge scrum">SCRUM-53</span>
+                    <span class="badge competence">#competence-SI8</span>
+                    <span class="badge livrable">@livrable-code</span>
+                </div>
+            </div>
+            
+            <div class="soutenance-info">
+                <h3>📋 Informations de la soutenance</h3>
+                <p><strong>Projet :</strong> Système de Gestion PFE avec IA</p>
+                <p><strong>Étudiants :</strong> Ahmed Ben Ali, Maysa Trabelsi</p>
+                <p><strong>Date :</strong> 15/07/2024 à 09:00 • <strong>Salle :</strong> A101</p>
+            </div>
+            
+            <div class="criteria-section">
