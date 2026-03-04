@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-32 - Création Compte Étudiant</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f5f7fa; padding: 40px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; text-align: center; }
+        .header h1 { font-size: 32px; margin-bottom: 10px; }
+        .badge { display: inline-block; padding: 5px 12px; margin: 5px; border-radius: 15px; font-size: 12px; font-weight: bold; }
+        .scrum { background: rgba(255,255,255,0.2); color: white; }
+        .competence { background: #27ae60; color: white; }
+        .livrable { background: #e74c3c; color: white; }
+        .form-card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 600; font-size: 14px; }
+        .form-group input, .form-group select { width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 15px; transition: border-color 0.3s; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #667eea; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .btn { width: 100%; padding: 16px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3); }
+        .info-banner { background: #e3f2fd; color: #1565c0; padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid #667eea; }
+        .footer { text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 13px; }
+        .role-indicator { display: inline-flex; align-items: center; gap: 8px; background: #fff3e0; color: #e65100; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>👤 Création Compte Étudiant</h1>
+            <p>Interface Coordinateur - Gestion des accès PFE</p>
+            <div style="margin-top: 20px;">
+                <span class="badge scrum">SCRUM-32</span>
+                <span class="badge competence">#competence-SI8</span>
+                <span class="badge livrable">@livrable-code</span>
+            </div>
+        </div>
+        
+        <div class="form-card">
+            <div class="role-indicator">
+                👔 Connecté en tant que: <strong>Coordinateur</strong>
+            </div>
+            
+            <div class="info-banner">
+                ℹ️ Ce formulaire permet de créer un compte étudiant avec les accès nécessaires au système de gestion des PFE.
+            </div>
+            
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nom">Nom de famille *</label>
+                        <input type="text" id="nom" name="nom" placeholder="Ex: Ben Ali" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom *</label>
+                        <input type="text" id="prenom" name="prenom" placeholder="Ex: Ahmed" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email institutionnel *</label>
+                    <input type="email" id="email" name="email" placeholder="prenom.nom@univ.tn" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="matricule">Numéro matricule *</label>
+                        <input type="text" id="matricule" name="matricule" placeholder="Ex: 2024001234" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="niveau">Niveau d'études *</label>
+                        <select id="niveau" name="niveau" required>
+                            <option value="">Sélectionner...</option>
+                            <option value="licence3">Licence 3</option>
+                            <option value="master1">Master 1</option>
+                            <option value="master2">Master 2</option>
+                            <option value="ingenieur">Ingénieur</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="specialite">Spécialité *</label>
+                        <select id="specialite" name="specialite" required>
+                            <option value="">Sélectionner...</option>
+                            <option value="informatique">Informatique</option>
+                            <option value="telecom">Télécommunications</option>
+                            <option value="electromecanique">Électromécanique</option>
+                            <option value="gestion">Gestion</option>
+                            <option value="finance">Finance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="annee">Année universitaire *</label>
+                        <input type="text" id="annee" name="annee" value="2024-2025" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Mot de passe temporaire *</label>
+                    <input type="password" id="password" name="password" placeholder="Généré automatiquement ou saisi manuellement" required>
+                </div>
+                
+                <button type="submit" class="btn">✅ Créer le compte étudiant</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="footer">
+        🎓 Innovation GJ-ATM | Système de Gestion des PFE | #competence-SI8 @livrable-code
+    </div>
+</body>
+</html>
