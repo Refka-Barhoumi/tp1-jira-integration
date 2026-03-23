@@ -19,17 +19,21 @@ Le projet est développé dans le cadre du TP **Jira + GitHub Integration** à l
 | Acteur                  | Fonctionnalités principales |
 |--------------------------|----------------------------|
 | 👨‍🎓 Étudiant            | Accéder à son espace, soumettre un projet, consulter ses comptes rendus, personnaliser le tableau de bord, gérer projet seul ou en binôme |
-| 👩‍🏫 Tuteur              | Accéder à son espace, valider ou commenter les propositions, suivre les comptes rendus, organiser réunions |
+| 👩‍🏫 Tuteur              | Accéder à son espace, valider ou commenter les propositions, suivre les comptes rendus, organiser des réunions |
 | 🎯 Coordinateur pédagogique | Créer et gérer les comptes, attribuer les tuteurs, suivre l’avancement global des projets |
 | 🏛️ Jury                  | Consulter et évaluer les rapports finaux, enregistrer les notes et appréciations, archiver les projets |
 
 ---
 
 ## 🛠️ Technologies utilisées
-- **Front-End :** HTML, CSS, JavaScript  
-- **Backend (optionnel) :** Node.js / Express  
+- **Frontend :** ⚡ Angular 17+  
+- **Backend :** ☕ Spring Boot 3.2  
+- **Base de données :** 🐘 PostgreSQL 15 + JSONB  
 - **Authentification :** 🔑 JWT (JSON Web Tokens)  
-- **Gestion de versions :** Git et GitHub  
-- **Diagrammes :** PlantUML  
+- **DevOps :** 🚀 GitHub Actions (CI/CD)  
+- **Diagrammes :** 📊 PlantUML  
 
+---
+## 🔄 Approche de développement
+Nous avons commencé par un prototype Front-End (HTML/CSS) afin de valider l’interface utilisateur, avant de migrer vers Angular pour l’implémentation finale.
 ---
