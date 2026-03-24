@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-18 - Dashboard Personnalisable</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f5f7; }
+        .header { background: #0052CC; color: white; padding: 20px; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 20px; }
+        .widget { background: white; border-radius: 8px; padding: 20px; margin: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .badge { display: inline-block; padding: 5px 10px; margin: 5px; border-radius: 3px; font-size: 12px; }
+        .scrum { background: #0052CC; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Mon Espace Personnalisable</h1>
+        <p>SCRUM-18 : Personnalisation de l'espace étudiant</p>
+    </div>
+    
+    <div class="container">
+        <div class="info" style="background: white; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            <span class="badge scrum">SCRUM-18</span>
+            <span class="badge competence">#competence-SI6</span>
+            <span class="badge livrable">@livrable-code</span>
+        </div>
+        
+        <div class="grid">
+            <div class="widget">
+                <h3>📁 Mes Projets</h3>
+                <p>Projet PFE - En cours</p>
+                <p>Binôme: Non assigné</p>
+            </div>
+            
+            <div class="widget">
+                <h3>📝 Comptes Rendus</h3>
+                <p>CR1: En attente</p>
+                <p>CR2: Non déposé</p>
+            </div>
+            
+            <div class="widget">
+                <h3>🔔 Notifications</h3>
+                <p>3 nouvelles alertes</p>
+                <p>Date soutenance: À définir</p>
+            </div>
+        </div>
+        
+        <p style="text-align: center; margin-top: 30px;">
+            <small>🎓 Innovation GJ-ATM : Traçabilité académique activée</small>
+        </p>
+    </div>
+</body>
+</html>

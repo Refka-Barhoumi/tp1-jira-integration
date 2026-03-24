@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-33 - Création Compte Tuteur</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .header h1 { color: #667eea; font-size: 28px; margin-bottom: 10px; }
+        .role-badge {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .badge { display: inline-block; padding: 6px 15px; margin: 5px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .scrum { background: #667eea; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        label { color: #333; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
+        .required::after { content: " *"; color: #ff6b6b; }
+        input, select, textarea { padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 15px; }
+        .competences-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        .competences-section h3 { color: #667eea; margin-bottom: 15px; }
+        .checkbox-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .checkbox-item { display: flex; align-items: center; gap: 10px; }
+        .checkbox-item input { width: auto; }
+        button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .footer { text-align: center; margin-top: 30px; color: rgba(255,255,255,0.9); font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="role-badge">👨‍🏫 ESPACE COORDONNATEUR</span>
+            <h1>Création de Compte Tuteur</h1>
+            <p>SCRUM-33 : Gestion des comptes tuteurs pour encadrement</p>
+            <div class="badge-container">
+                <span class="badge scrum">SCRUM-33</span>
+                <span class="badge competence">#competence-SI6</span>
+                <span class="badge livrable">@livrable-code</span>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="required">Nom</label>
+                        <input type="text" placeholder="Ex: Ben Ali" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="required">Prénom</label>
+                        <input type="text" placeholder="Ex: Mohamed" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="required">Email professionnel</label>
+                        <input type="email" placeholder="prenom.nom@univ.fr" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="required">Département</label>
+                        <select required>
+                            <option value="">Sélectionner...</option>
+                            <option value="INFO">Informatique</option>
+                            <option value="MATH">Mathématiques</option>
+                            <option value="PHYS">Physique</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="required">Grade</label>
+                        <select required>
+                            <option value="">Sélectionner...</option>
+                            <option value="PROF">Professeur</option>
+                            <option value="MA">Maître de conférences</option>
+                            <option value="MCA">Maître assistant</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Spécialité principale</label>
+                        <input type="text" placeholder="Ex: Intelligence Artificielle">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Charge maximale de projets</label>
+                        <input type="number" value="5" min="1" max="10">
+                    </div>
+                </div>
+
+                <div class="competences-section">
+                    <h3>🎯 Domaines d'expertise</h3>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="web">
+                            <label for="web" style="margin-bottom: 0;">Développement Web</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="mobile">
+                            <label for="mobile" style="margin-bottom: 0;">Développement Mobile</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="ia">
+                            <label for="ia" style="margin-bottom: 0;">Intelligence Artificielle</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="securite">
+                            <label for="securite" style="margin-bottom: 0;">Sécurité informatique</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cloud">
+                            <label for="cloud" style="margin-bottom: 0;">Cloud Computing</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="data">
+                            <label for="data" style="margin-bottom: 0;">Big Data / Data Science</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit">✅ Créer le compte tuteur</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            🎓 Innovation GJ-ATM | Traçabilité académique | #competence-SI6 @livrable-code
+        </div>
+    </div>
+</body>
+</html>

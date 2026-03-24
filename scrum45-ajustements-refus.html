@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-45 - Ajustements ou Refus</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+            min-height: 100vh;
+            padding: 40px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .header h1 { color: #e74c3c; font-size: 28px; margin-bottom: 10px; }
+        .badge { display: inline-block; padding: 6px 15px; margin: 5px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .scrum { background: #e74c3c; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .option-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .option-card.ajustements { border-top: 5px solid #f39c12; }
+        .option-card.refus { border-top: 5px solid #e74c3c; }
+        
+        .option-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .option-card h2 { margin-bottom: 15px; font-size: 24px; }
+        .option-card.ajustements h2 { color: #f39c12; }
+        .option-card.refus h2 { color: #e74c3c; }
+        
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #333; font-weight: 600; }
+        textarea, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            color: white;
+        }
+        .btn-ajustements { background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%); }
+        .btn-refus { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); }
+        
+        .footer { text-align: center; margin-top: 40px; color: rgba(255,255,255,0.9); font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚠️ Demander des Ajustements ou Refuser</h1>
+            <p>Assurer la qualité académique du projet</p>
+            <div style="margin-top: 15px;">
+                <span class="badge scrum">SCRUM-45</span>
+                <span class="badge competence">#competence-SI8</span>
+                <span class="badge livrable">@livrable-code</span>
+            </div>
+        </div>
+
+        <div class="options-grid">
+            <!-- Ajustements -->
+            <div class="option-card ajustements">
+                <div class="option-icon">📝</div>
+                <h2>Demander des Ajustements</h2>
+                <p style="color: #666; margin-bottom: 20px;">Le projet est intéressant mais nécessite des modifications.</p>
+                
+                <form id="form-ajustements">
+                    <div class="form-group">
+                        <label>Points à modifier</label>
+                        <select name="points">
+                            <option>Préciser les objectifs</option>
+                            <option>Réduire le périmètre</option>
+                            <option>Ajouter des technologies</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Commentaires détaillés</label>
+                        <textarea name="commentaires" rows="5" placeholder="Vos remarques constructives..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-ajustements">📤 Envoyer pour ajustements</button>
+                </form>
+            </div>
+
+            <!-- Refus -->
+            <div class="option-card refus">
+                <div class="option-icon">❌</div>
+                <h2>Refuser la Proposition</h2>
+                <p style="color: #666; margin-bottom: 20px;">Le projet n'est pas viable ou ne correspond pas aux critères.</p>
+                
+                <form id="form-refus">
+                    <div class="form-group">
+                        <label>Motif du refus</label>
+                        <select name="motif">
+                            <option>Thème hors périmètre</option>
+                            <option>Projet trop vaste</option>
+                            <option>Ressources insuffisantes</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Commentaires détaillés</label>
+                        <textarea name="commentaires" rows="5" placeholder="Vos remarques constructives..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-refus">📤 Envoyer le refus</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2026 - Gestion des projets SCRUM | Académie SI
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Gestion formulaire Ajustements
+        document.getElementById('form-ajustements').addEventListener('submit', function(e){
+            e.preventDefault(); // empêche le rechargement
+            const points = this.points.value;
+            const commentaires = this.commentaires.value;
+            alert(`✅ Ajustements envoyés !\nPoints : ${points}\nCommentaires : ${commentaires}`);
+            this.reset();
+        });
+
+        // Gestion formulaire Refus
+        document.getElementById('form-refus').addEventListener('submit', function(e){
+            e.preventDefault(); // empêche le rechargement
+            const motif = this.motif.value;
+            const commentaires = this.commentaires.value;
+            alert(`❌ Refus envoyé !\nMotif : ${motif}\nCommentaires : ${commentaires}`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-27 - Dépôt Compte Rendu</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { color: #11998e; font-size: 28px; margin-bottom: 10px; }
+        .badge { display: inline-block; padding: 6px 15px; margin: 5px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .scrum { background: #11998e; color: white; }
+        .competence { background: #36B37E; color: white; }
+        .livrable { background: #FF5630; color: white; }
+        .form-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 8px; color: #333; font-weight: 600; }
+        input, textarea, select { width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 15px; }
+        .file-upload {
+            border: 3px dashed #11998e;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            background: #f0fff4;
+        }
+        .file-upload p { color: #11998e; margin-bottom: 15px; }
+        button { width: 100%; padding: 16px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; }
+        .footer { text-align: center; margin-top: 30px; color: rgba(255,255,255,0.9); font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="header">
+                <h1>📝 Dépôt de Compte Rendu</h1>
+                <p>SCRUM-27 : Rendre compte de l'avancement du projet</p>
+                <div>
+                    <span class="badge scrum">SCRUM-27</span>
+                    <span class="badge competence">#competence-SI7</span>
+                    <span class="badge livrable">@livrable-code</span>
+                </div>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label>Numéro du compte rendu *</label>
+                    <select required>
+                        <option value="">Sélectionner...</option>
+                        <option value="CR1">CR #1 - Sprint 1</option>
+                        <option value="CR2">CR #2 - Sprint 2</option>
+                        <option value="CR3">CR #3 - Sprint 3</option>
+                        <option value="CR4">CR #4 - Sprint 4</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Période couverte *</label>
+                    <div style="display: flex; gap: 15px;">
+                        <input type="date" placeholder="Du" required>
+                        <input type="date" placeholder="Au" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Travail réalisé *</label>
+                    <textarea rows="5" placeholder="Décrivez les tâches accomplies, les difficultés rencontrées..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Document PDF *</label>
+                    <div class="file-upload">
+                        <p>📁 Glissez-déposez votre fichier ici</p>
+                        <p>ou</p>
+                        <input type="file" accept=".pdf" required>
+                    </div>
+                </div>
+                
+                <button type="submit">Déposer le compte rendu</button>
+            </form>
+        </div>
+        
+        <div class="footer">
+            🎓 Innovation GJ-ATM | #competence-SI7 @livrable-code
+        </div>
+    </div>
+</body>
+</html>
