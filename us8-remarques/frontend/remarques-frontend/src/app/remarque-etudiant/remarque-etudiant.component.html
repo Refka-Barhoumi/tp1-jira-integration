@@ -1,0 +1,84 @@
+<div class="container">
+
+  <header class="header">
+    <h1>📋 Mes Remarques</h1>
+    <p class="sous-titre">
+      Remarques de votre tuteur —
+      <span>Étudiant #{{ etudiantId }}</span>
+    </p>
+  </header>
+
+  <section class="card formulaire">
+    <h2>
+      ✏️ Ajouter une remarque
+      <span class="badge-tuteur">Tuteur</span>
+    </h2>
+
+    <div class="champ">
+      <label for="contenu">Contenu de la remarque</label>
+      <textarea
+        id="contenu"
+        [(ngModel)]="nouvelleRemarque.contenu"
+        placeholder="Écrivez votre remarque ici..."
+        rows="4">
+      </textarea>
+    </div>
+
+    <div class="champ">
+      <label for="etudiantId">ID de l'étudiant</label>
+      <input
+        id="etudiantId"
+        type="number"
+        [(ngModel)]="etudiantId"
+        min="1"
+        placeholder="Ex : 1" />
+    </div>
+
+    <button class="btn-envoyer" (click)="soumettre()">
+      📤 Envoyer la remarque
+    </button>
+
+    <div class="msg-succes" *ngIf="message">✅ {{ message }}</div>
+    <div class="msg-erreur" *ngIf="erreur">❌ {{ erreur }}</div>
+  </section>
+
+  <div class="separateur"></div>
+
+  <div class="actions">
+    <button class="btn-rafraichir" (click)="chargerRemarques()">
+      🔄 Actualiser
+    </button>
+    <span style="font-size: 0.85rem; color: #6b7280;">
+      {{ remarques.length }} remarque(s) trouvée(s)
+    </span>
+  </div>
+
+  <p class="chargement" *ngIf="chargement">⏳ Chargement en cours...</p>
+
+  <section class="liste-remarques">
+    <h2>
+      💬 Remarques reçues
+      <span class="compteur">{{ remarques.length }}</span>
+    </h2>
+
+    <div class="vide" *ngIf="remarques.length === 0 && !chargement">
+      <p>📭 Aucune remarque pour le moment.</p>
+      <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+        Les remarques de votre tuteur apparaîtront ici.
+      </p>
+    </div>
+
+    <div class="carte-remarque" *ngFor="let r of remarques">
+      <div class="carte-header">
+        <div class="icone-remarque">📝</div>
+        <span class="date">{{ formaterDate(r.date) }}</span>
+      </div>
+      <p class="contenu">{{ r.contenu }}</p>
+      <div class="carte-footer">
+        <span class="etudiant-tag">Étudiant #{{ r.etudiantId }}</span>
+      </div>
+    </div>
+
+  </section>
+
+</div> le contenu de remarque-etudiant.component.html

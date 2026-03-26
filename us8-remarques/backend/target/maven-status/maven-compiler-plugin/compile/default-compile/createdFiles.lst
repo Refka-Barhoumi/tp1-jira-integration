@@ -1,0 +1,5 @@
+com\us8\remarques\repository\RemarqueRepository.class
+com\us8\remarques\service\RemarqueService.class
+com\us8\remarques\model\Remarque.class
+com\us8\remarques\RemarquesBackendApplication.class
+com\us8\remarques\controller\RemarqueController.class

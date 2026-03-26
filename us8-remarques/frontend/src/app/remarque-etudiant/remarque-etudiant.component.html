@@ -1,0 +1,106 @@
+<div class="page-wrapper">
+
+  <header class="app-header">
+    <div class="logo">PFE<span>Manager</span></div>
+    <div class="user-badge">
+      <div class="avatar">ET</div>
+      <span>Étudiant</span>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <div class="page-header">
+      <div class="breadcrumb">Tableau de bord › Mon Projet › Remarques</div>
+      <h1 class="page-title">Remarques du Tuteur</h1>
+      <p class="page-subtitle">Consultez les remarques pour améliorer votre proposition.</p>
+    </div>
+
+    <div class="projet-card">
+      <div>
+        <div class="projet-title">Mon Projet de Fin d'Études</div>
+        <div class="projet-meta">Étudiant #{{ etudiantId }}</div>
+      </div>
+      <div class="projet-status">⏳ En révision</div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon blue">💬</div>
+        <div>
+          <div class="stat-value">{{ remarques.length }}</div>
+          <div class="stat-label">Total</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon orange">🔔</div>
+        <div>
+          <div class="stat-value">{{ nonLuesCount }}</div>
+          <div class="stat-label">Non lues</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green">✅</div>
+        <div>
+          <div class="stat-value">{{ luesCount }}</div>
+          <div class="stat-label">Lues</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info" *ngIf="nonLuesCount > 0">
+      ℹ️ Vous avez <strong>{{ nonLuesCount }} remarque(s)</strong> non lue(s).
+    </div>
+
+    <div class="alert alert-error" *ngIf="erreur">⚠️ {{ erreur }}</div>
+
+    <div class="filter-bar">
+      <button class="filter-btn" [class.active]="filtre === 'toutes'" (click)="filtre = 'toutes'">
+        Toutes ({{ remarques.length }})
+      </button>
+      <button class="filter-btn" [class.active]="filtre === 'non-lues'" (click)="filtre = 'non-lues'">
+        Non lues ({{ nonLuesCount }})
+      </button>
+      <button class="filter-btn" [class.active]="filtre === 'lues'" (click)="filtre = 'lues'">
+        Lues ({{ luesCount }})
+      </button>
+    </div>
+
+    <div class="loading" *ngIf="chargement">
+      <div class="spinner"></div> Chargement...
+    </div>
+
+    <div class="empty-state" *ngIf="!chargement && remarquesFiltrees.length === 0">
+      <div class="empty-icon">📭</div>
+      <div class="empty-title">Aucune remarque</div>
+      <p>Votre tuteur n'a pas encore ajouté de remarques.</p>
+    </div>
+
+    <div class="section-title" *ngIf="!chargement && remarquesFiltrees.length > 0">
+      Remarques reçues <span class="badge">{{ remarquesFiltrees.length }}</span>
+    </div>
+
+    <div class="remarque-card" *ngFor="let r of remarquesFiltrees" [class.non-lu]="!r.lu">
+      <div class="remarque-header">
+        <div class="tuteur-info">
+          <div class="tuteur-avatar">{{ r.tuteurNom ? r.tuteurNom[0] : 'T' }}</div>
+          <div>
+            <div class="tuteur-name">{{ r.tuteurNom || 'Tuteur encadrant' }}</div>
+            <div class="tuteur-role">Tuteur encadrant</div>
+          </div>
+        </div>
+        <div class="remarque-date">
+          {{ formaterDate(r.date) }}
+          <span class="new-tag" *ngIf="!r.lu">Nouveau</span>
+        </div>
+      </div>
+      <div class="remarque-contenu">{{ r.contenu }}</div>
+      <div class="remarque-actions">
+        <button class="btn-sm btn-primary-sm" *ngIf="!r.lu" (click)="marquerLue(r)">
+          ✓ Marquer comme lue
+        </button>
+      </div>
+    </div>
+
+  </main>
+</div>
