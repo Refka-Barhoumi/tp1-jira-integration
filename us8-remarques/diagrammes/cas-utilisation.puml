@@ -1,0 +1,99 @@
+@startuml DiagrammeCasUtilisation_US8
+
+skinparam actorBorderColor #6366F1
+skinparam actorBackgroundColor #EEF2FF
+skinparam actorFontColor #1a1f36
+skinparam actorFontSize 13
+
+skinparam usecaseBorderColor #6366F1
+skinparam usecaseBackgroundColor #F8F9FF
+skinparam usecaseFontColor #1a1f36
+skinparam usecaseFontSize 12
+
+skinparam rectangleBorderColor #6366F1
+skinparam rectangleBackgroundColor #FAFAFA
+skinparam rectangleFontColor #6366F1
+skinparam rectangleFontSize 14
+
+skinparam arrowColor #374151
+skinparam arrowFontSize 11
+
+skinparam packageBorderColor #E2E8F0
+skinparam packageBackgroundColor #F8FAFC
+
+title US8 – Diagramme de Cas d'Utilisation\nEn tant qu'étudiant, je peux recevoir les remarques du tuteur
+
+' ===== ACTEURS =====
+actor "Étudiant" as ET #EEF2FF
+actor "Tuteur" as TU #FFF7ED
+actor "Système Email\n(Gmail SMTP)" as EM #F0FDF4
+
+' ===== SYSTÈME =====
+rectangle "Système PFE Manager" {
+
+  ' --- Authentification ---
+  package "Authentification" {
+    usecase "UC1\nSe connecter\nen tant qu'étudiant" as UC1
+    usecase "UC2\nSe connecter\nen tant que tuteur" as UC2
+    usecase "UC3\nRéinitialiser\nle mot de passe" as UC3
+    usecase "UC4\nSe déconnecter" as UC4
+  }
+
+  ' --- Gestion Remarques ---
+  package "Gestion des Remarques" {
+    usecase "UC5\nConsulter la liste\ndes étudiants" as UC5
+    usecase "UC6\nRédiger une\nremarque" as UC6
+    usecase "UC7\nJoindre un fichier\nà la remarque" as UC7
+    usecase "UC8\nEnvoyer la remarque\nà l'étudiant" as UC8
+    usecase "UC9\nRecevoir une\nnotification email" as UC9
+  }
+
+  ' --- Espace Étudiant ---
+  package "Espace Étudiant" {
+    usecase "UC10\nAfficher les\nremarques reçues" as UC10
+    usecase "UC11\nConsulter le détail\nd'une remarque" as UC11
+    usecase "UC12\nTélécharger le\nfichier joint" as UC12
+    usecase "UC13\nAjuster sa\nproposition" as UC13
+  }
+
+  ' --- Historique ---
+  package "Historique" {
+    usecase "UC14\nConsulter l'historique\ndes remarques envoyées" as UC14
+    usecase "UC15\nSuivre le statut\ndes remarques" as UC15
+  }
+}
+
+' ===== RELATIONS ÉTUDIANT =====
+ET --> UC1
+ET --> UC3
+ET --> UC4
+ET --> UC10
+ET --> UC11
+ET --> UC12
+ET --> UC13
+ET --> UC15
+
+' ===== RELATIONS TUTEUR =====
+TU --> UC2
+TU --> UC4
+TU --> UC5
+TU --> UC6
+TU --> UC8
+TU --> UC14
+
+' ===== RELATIONS SYSTÈME EMAIL =====
+EM --> UC9
+
+' ===== INCLUDES =====
+UC6 ..> UC7 : <<include>>
+UC8 ..> UC6 : <<include>>
+UC8 ..> UC9 : <<include>>
+UC10 ..> UC11 : <<include>>
+UC13 ..> UC10 : <<include>>
+
+' ===== EXTENDS =====
+UC11 ..> UC12 : <<extend>>
+UC3 ..> UC1 : <<extend>>
+UC15 ..> UC14 : <<extend>>
+
+@enduml
