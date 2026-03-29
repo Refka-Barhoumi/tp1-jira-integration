@@ -1,0 +1,166 @@
+@startuml DiagrammeClasse_US8
+
+skinparam classBackgroundColor #F8F9FA
+skinparam classBorderColor #6366F1
+skinparam classHeaderBackgroundColor #6366F1
+skinparam classHeaderFontColor white
+skinparam arrowColor #374151
+skinparam fontSize 13
+
+class Etudiant {
+  - id : Long
+  - prenom : String
+  - nom : String
+  - email : String
+  - motDePasse : String
+  --
+  + getId() : Long
+  + getNom() : String
+  + getPrenom() : String
+  + getEmail() : String
+  + getMotDePasse() : String
+}
+
+class Tuteur {
+  - id : Long
+  - prenom : String
+  - nom : String
+  - email : String
+  - motDePasse : String
+  --
+  + getId() : Long
+  + getNom() : String
+  + getPrenom() : String
+  + getEmail() : String
+}
+
+class Remarque {
+  - id : Long
+  - contenu : String
+  - date : LocalDateTime
+  - etudiantId : Long
+  - tuteurId : Long
+  - statut : String
+  - fichierNom : String
+  - fichierChemin : String
+  --
+  + getId() : Long
+  + getContenu() : String
+  + getDate() : LocalDateTime
+  + getStatut() : String
+  + getFichierNom() : String
+}
+
+class AuthController {
+  --
+  + login(body : Map) : ResponseEntity
+  + resetPassword(body : Map) : ResponseEntity
+  + test() : ResponseEntity
+}
+
+class TuteurController {
+  --
+  + login(body : Map) : ResponseEntity
+  + getEtudiants() : ResponseEntity
+  + envoyerRemarque(...) : ResponseEntity
+  + getRemarquesTuteur(tuteurId) : ResponseEntity
+}
+
+class RemarqueController {
+  --
+  + getTout() : ResponseEntity
+  + getParEtudiant(etudiantId) : ResponseEntity
+  + creer(body : Map) : ResponseEntity
+  + changerStatut(id, body) : ResponseEntity
+}
+
+class EtudiantRepository {
+  --
+  + findByEmail(email) : Optional<Etudiant>
+  + findAll() : List<Etudiant>
+  + findById(id) : Optional<Etudiant>
+}
+
+class RemarqueRepository {
+  --
+  + findByEtudiantId(id) : List<Remarque>
+  + findByTuteurId(id) : List<Remarque>
+  + save(r : Remarque) : Remarque
+}
+
+class TuteurRepository {
+  --
+  + findByEmail(email) : Optional<Tuteur>
+  + findById(id) : Optional<Tuteur>
+}
+
+class EmailService {
+  --
+  + envoyerRemarque(email, nom, tuteur, contenu) : void
+}
+
+class LoginComponent {
+  - email : string
+  - motDePasse : string
+  - role : string
+  - showPassword : boolean
+  --
+  + login() : void
+}
+
+class RemarqueEtudiantComponent {
+  - remarques : any[]
+  - etudiant : any
+  --
+  + chargerRemarques() : void
+  + soumettreRemarque() : void
+}
+
+class TuteurComponent {
+  - etudiants : any[]
+  - tuteur : any
+  - contenu : string
+  --
+  + chargerEtudiants() : void
+  + envoyerRemarque() : void
+}
+
+class AuthService {
+  - apiUrl : string
+  --
+  + login(email, motDePasse) : Observable
+  + saveEtudiant(e) : void
+  + getEtudiant() : any
+  + logout() : void
+}
+
+class TuteurService {
+  - apiUrl : string
+  --
+  + getEtudiants() : Observable
+  + envoyerRemarque(...) : Observable
+  + getRemarquesTuteur(id) : Observable
+}
+
+' Relations
+Tuteur "1" --> "0..*" Remarque : envoie
+Etudiant "1" --> "0..*" Remarque : reçoit
+
+AuthController --> EtudiantRepository : utilise
+TuteurController --> TuteurRepository : utilise
+TuteurController --> RemarqueRepository : utilise
+TuteurController --> EtudiantRepository : utilise
+TuteurController --> EmailService : utilise
+RemarqueController --> RemarqueRepository : utilise
+
+EtudiantRepository --> Etudiant : gère
+TuteurRepository --> Tuteur : gère
+RemarqueRepository --> Remarque : gère
+
+LoginComponent --> AuthService : utilise
+RemarqueEtudiantComponent --> AuthService : utilise
+TuteurComponent --> TuteurService : utilise
+AuthService --> AuthController : appelle
+TuteurService --> TuteurController : appelle
+
+@enduml

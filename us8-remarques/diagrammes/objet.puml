@@ -1,0 +1,71 @@
+@startuml DiagrammeObjet_US8
+
+skinparam objectBackgroundColor #EEF2FF
+skinparam objectBorderColor #6366F1
+skinparam objectHeaderBackgroundColor #6366F1
+skinparam objectHeaderFontColor white
+skinparam arrowColor #374151
+skinparam fontSize 13
+
+object "tuteur1 : Tuteur" as T {
+  id = 1
+  prenom = "Karim"
+  nom = "Ben Ali"
+  email = "karim.benali@example.com"
+  motDePasse = "1234"
+}
+
+object "etudiant1 : Etudiant" as E {
+  id = 1
+  prenom = "Mohamed"
+  nom = "Elzein"
+  email = "mohamed.elzein@example.com"
+  motDePasse = "1234"
+}
+
+object "etudiant2 : Etudiant" as E2 {
+  id = 2
+  prenom = "Amina"
+  nom = "Elmasri"
+  email = "amina.elmasri@example.com"
+  motDePasse = "1234"
+}
+
+object "remarque1 : Remarque" as R1 {
+  id = 1
+  contenu = "Votre introduction doit être améliorée"
+  date = "2026-03-28 10:30:00"
+  etudiantId = 1
+  tuteurId = 1
+  statut = "Non lue"
+  fichierNom = null
+}
+
+object "remarque2 : Remarque" as R2 {
+  id = 2
+  contenu = "La méthodologie est incomplète"
+  date = "2026-03-28 14:00:00"
+  etudiantId = 1
+  tuteurId = 1
+  statut = "Lue"
+  fichierNom = "corrections.pdf"
+}
+
+object "remarque3 : Remarque" as R3 {
+  id = 3
+  contenu = "Bon travail sur la partie analyse"
+  date = "2026-03-28 15:00:00"
+  etudiantId = 2
+  tuteurId = 1
+  statut = "Non lue"
+  fichierNom = null
+}
+
+T --> R1 : envoie
+T --> R2 : envoie
+T --> R3 : envoie
+E --> R1 : reçoit
+E --> R2 : reçoit
+E2 --> R3 : reçoit
+
+@enduml

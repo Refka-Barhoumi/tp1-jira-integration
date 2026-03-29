@@ -1,0 +1,70 @@
+@startuml DiagrammeSequence_US8
+
+skinparam sequenceArrowColor #6366F1
+skinparam sequenceLifeLineBorderColor #6366F1
+skinparam sequenceParticipantBackgroundColor #EEF2FF
+skinparam sequenceParticipantBorderColor #6366F1
+skinparam sequenceParticipantFontColor #1a1f36
+skinparam sequenceActorBorderColor #6366F1
+skinparam sequenceActorBackgroundColor #EEF2FF
+skinparam fontSize 12
+skinparam sequenceMessageAlign center
+
+title US8 – Réception des remarques du tuteur
+
+actor "Tuteur" as TU
+actor "Étudiant" as ET
+participant "LoginComponent" as LC
+participant "AuthController\n/TuteurController" as AC
+participant "PostgreSQL\nus8_db" as DB
+participant "EmailService" as ES
+participant "RemarqueController" as RC
+participant "RemarqueEtudiantComponent" as REC
+
+== 1. Authentification Tuteur ==
+TU -> LC : Sélectionne rôle "Tuteur"\nSaisit email + mot de passe
+LC -> AC : POST /tuteur/login\n{email, motDePasse}
+AC -> DB : findByEmail(email)
+DB --> AC : Tuteur trouvé
+AC --> LC : {id, nom, prenom, email, role}
+LC -> LC : localStorage.setItem('tuteur', data)
+LC --> TU : Redirige vers /tuteur
+
+== 2. Chargement des étudiants ==
+TU -> AC : GET /tuteur/etudiants
+AC -> DB : findAll() étudiants
+DB --> AC : Liste étudiants
+AC --> TU : [etudiant1, etudiant2, ...]
+
+== 3. Envoi d'une remarque ==
+TU -> TU : Sélectionne étudiant
+TU -> TU : Rédige la remarque\n(+ fichier optionnel)
+TU -> AC : POST /tuteur/remarque\n{contenu, etudiantId, tuteurId, fichier}
+AC -> DB : save(remarque)
+DB --> AC : Remarque sauvegardée
+AC -> ES : envoyerRemarque(email, nom, tuteur, contenu)
+ES -> ET : Email envoyé\n"Nouvelle remarque de votre tuteur"
+AC --> TU : 201 - Remarque envoyée !
+
+== 4. Authentification Étudiant ==
+ET -> LC : Sélectionne rôle "Étudiant"\nSaisit email + mot de passe
+LC -> AC : POST /auth/login\n{email, motDePasse}
+AC -> DB : findByEmail(email)
+DB --> AC : Étudiant trouvé
+AC --> LC : {id, nom, prenom, email}
+LC -> LC : localStorage.setItem('etudiant', data)
+LC --> ET : Redirige vers /remarques
+
+== 5. Consultation des remarques ==
+ET -> REC : Accède à /remarques
+REC -> RC : GET /remarques/{etudiantId}
+RC -> DB : findByEtudiantId(etudiantId)
+DB --> RC : Liste des remarques
+RC --> REC : [remarque1, remarque2, ...]
+REC --> ET : Affiche les remarques\n(contenu, date, statut, fichier)
+
+== 6. Ajustement de la proposition ==
+ET -> ET : Consulte les remarques
+ET -> ET : Ajuste sa proposition\nselon les remarques reçues
+
+@enduml
