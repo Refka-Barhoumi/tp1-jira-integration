@@ -34,6 +34,4 @@ Le projet est développé dans le cadre du TP **Jira + GitHub Integration** à l
 - **Diagrammes :** 📊 PlantUML  
 
 ---
-## 🔄 Approche de développement
-Nous avons commencé par un prototype Front-End (HTML/CSS) afin de valider l’interface utilisateur, avant de migrer vers Angular pour l’implémentation finale.
----
+
