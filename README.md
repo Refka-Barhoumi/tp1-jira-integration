@@ -37,77 +37,88 @@ Le projet est développé dans le cadre du TP **Jira + GitHub Integration** à l
 ## 📁 Architecture du projet
 
 ### 🗂️ Structure globale
+
+```
 PF-TP/
-├── backend/                          # Spring Boot 3.x
-└── frontend/                         # Angular 21.x
+├── backend/       # Spring Boot 3.x
+└── frontend/      # Angular 21.x
+```
+
 ### ☕ Backend — Spring Boot
+
+```
 backend/
-├── src/
-│   └── main/
-│       ├── java/com/example/backend/
-│       │   ├── controller/
-│       │   │   ├── AuthController.java        # Login, Register, Password Reset
-│       │   │   ├── ProjectController.java     # CRUD Projets
-│       │   │   └── StudentController.java     # CRUD Étudiants
-│       │   ├── entity/
-│       │   │   ├── Project.java               # Entité Projet
-│       │   │   ├── ProjectResponse.java       # DTO Projet
-│       │   │   └── Student.java               # Entité Étudiant
-│       │   ├── repository/
-│       │   │   ├── ProjectRepository.java     # Accès données Projet
-│       │   │   └── StudentRepository.java     # Accès données Étudiant
-│       │   ├── security/
-│       │   │   ├── JwtFilter.java             # Filtre JWT
-│       │   │   ├── JwtUtil.java               # Génération/Validation Token
-│       │   │   └── SecurityConfig.java        # Config Spring Security + CORS
-│       │   └── service/
-│       │       ├── PasswordResetService.java  # Réinitialisation mot de passe
-│       │       ├── ProjectService.java        # Logique métier Projet
-│       │       └── StudentService.java        # Logique métier Étudiant
-│       └── resources/
-│           └── application.properties         # Config DB + Mail + JWT
-└── pom.xml                                    # Dépendances Maven
+├── src/main/java/com/example/backend/
+│   ├── controller/
+│   │   ├── AuthController.java        # Login, Register, Password Reset
+│   │   ├── ProjectController.java     # CRUD Projets
+│   │   └── StudentController.java     # CRUD Étudiants
+│   ├── entity/
+│   │   ├── Project.java               # Entité Projet
+│   │   ├── ProjectResponse.java       # DTO Projet
+│   │   └── Student.java               # Entité Étudiant
+│   ├── repository/
+│   │   ├── ProjectRepository.java     # Accès données Projet
+│   │   └── StudentRepository.java     # Accès données Étudiant
+│   ├── security/
+│   │   ├── JwtFilter.java             # Filtre JWT
+│   │   ├── JwtUtil.java               # Génération/Validation Token
+│   │   └── SecurityConfig.java        # Config Spring Security + CORS
+│   └── service/
+│       ├── PasswordResetService.java  # Réinitialisation mot de passe
+│       ├── ProjectService.java        # Logique métier Projet
+│       └── StudentService.java        # Logique métier Étudiant
+└── src/main/resources/
+    └── application.properties         # Config DB + Mail + JWT
+```
+
 ### ⚡ Frontend — Angular
-frontend/
-├── src/
-│   └── app/
-│       ├── components/
-│       │   ├── login/                         # Page Connexion (US1)
-│       │   ├── register/                      # Page Inscription (US1)
-│       │   ├── forgot-password/               # Mot de passe oublié (US4)
-│       │   ├── reset-password/                # Réinitialisation (US4)
-│       │   ├── dashboard/                     # Tableau de bord étudiant (US2)
-│       │   └── project-form/                  # Formulaire projet (US5, US6, US7)
-│       ├── services/
-│       │   ├── auth.ts                        # Service authentification
-│       │   └── project.ts                     # Service projets
-│       ├── app.routes.ts                      # Routing Angular
-│       ├── app.config.ts                      # Configuration app
-│       └── app.ts                             # Composant racine
-├── public/
-│   └── logo.jpg                               # Logo FSTSBZ
-└── package.json                               # Dépendances npm
+
+```
+frontend/src/app/
+├── components/
+│   ├── login/                # Page Connexion (US1)
+│   ├── register/             # Page Inscription (US1)
+│   ├── forgot-password/      # Mot de passe oublié (US4)
+│   ├── reset-password/       # Réinitialisation (US4)
+│   ├── dashboard/            # Tableau de bord étudiant (US2)
+│   └── project-form/         # Formulaire projet (US5, US6, US7)
+├── services/
+│   ├── auth.ts               # Service authentification
+│   └── project.ts            # Service projets
+├── app.routes.ts             # Routing Angular
+├── app.config.ts             # Configuration app
+└── app.ts                    # Composant racine
+```
+
 ### 🗄️ Base de données — PostgreSQL
+
+```
 pf_tp/
-├── student          # Étudiants (id, email, password, fullName, resetToken)
-└── projects         # Projets (id, title, description, objectives,
-#  technologies, participationType,
-#  projectContext, companyName,
-#  companySupervisor, status,
-#  student_id, student2_id)
+├── student    (id, email, password, fullName, resetToken, resetTokenExpiry)
+└── projects   (id, title, description, objectives, technologies,
+                participationType, projectContext, companyName,
+                companySupervisor, status, student_id, student2_id)
+```
+
 ### 🔐 Endpoints API
-POST   /auth/register           # Inscription étudiant
-POST   /auth/login              # Connexion + Token JWT
-POST   /auth/forgot-password    # Demande réinitialisation
-POST   /auth/reset-password     # Nouveau mot de passe
-GET    /projects                # Tous les projets        [JWT]
-GET    /projects/student/{id}   # Projets d'un étudiant   [JWT]
-POST   /projects                # Créer un projet         [JWT]
-PUT    /projects/{id}           # Modifier un projet      [JWT]
-DELETE /projects/{id}           # Supprimer un projet     [JWT]
-GET    /students                # Tous les étudiants      [JWT]
-GET    /students/{id}           # Un étudiant             [JWT]
-POST   /students                # Créer un étudiant       [JWT]
-PUT    /students/{id}           # Modifier un étudiant    [JWT]
-DELETE /students/{id}           # Supprimer un étudiant   [JWT]
+
+```
+POST   /auth/register            # Inscription étudiant
+POST   /auth/login               # Connexion + Token JWT
+POST   /auth/forgot-password     # Demande réinitialisation
+POST   /auth/reset-password      # Nouveau mot de passe
+
+GET    /projects                 # Tous les projets        [JWT]
+GET    /projects/student/{id}    # Projets d'un étudiant   [JWT]
+POST   /projects                 # Créer un projet         [JWT]
+PUT    /projects/{id}            # Modifier un projet      [JWT]
+DELETE /projects/{id}            # Supprimer un projet     [JWT]
+
+GET    /students                 # Tous les étudiants      [JWT]
+GET    /students/{id}            # Un étudiant             [JWT]
+POST   /students                 # Créer un étudiant       [JWT]
+PUT    /students/{id}            # Modifier un étudiant    [JWT]
+DELETE /students/{id}            # Supprimer un étudiant   [JWT]
+```
 
