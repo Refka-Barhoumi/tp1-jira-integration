@@ -1,0 +1,12 @@
+com\example\backend\model\Etudiant.class
+com\example\backend\model\Remarque.class
+com\example\backend\controller\AuthController.class
+com\example\backend\repository\EtudiantRepository.class
+com\example\backend\config\WebConfig.class
+com\example\backend\service\EmailService.class
+com\example\backend\repository\RemarqueRepository.class
+com\example\backend\controller\RemarqueController.class
+com\example\backend\model\Tuteur.class
+com\example\backend\RemarquesBackendApplication.class
+com\example\backend\controller\TuteurController.class
+com\example\backend\repository\TuteurRepository.class
