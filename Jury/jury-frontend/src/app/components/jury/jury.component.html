@@ -1,0 +1,93 @@
+<div class="main-container">
+  
+  <div class="card space-jury-card">
+    <div class="card-header text-center">
+      <i class="fa-solid fa-graduation-cap header-icon"></i>
+      <h2>Espace Jury</h2>
+      <p>Accédez à vos soutenances via votre email professionnel</p>
+    </div>
+
+    <div class="card-body">
+      <label>Email professionnel</label>
+      <input type="email" [(ngModel)]="email" placeholder="ahmed.ben@enis.tn">
+      
+      <button (click)="chargerSoutenances()" class="btn-primary">
+        <i class="fa-solid fa-envelope"></i> Accéder à mes soutenances
+      </button>
+
+      <div class="reset-link text-center" style="margin-top: 10px;">
+        <a (click)="afficherFormulaireReset = !afficherFormulaireReset" style="cursor: pointer; font-size: 0.9rem; color: #666;">
+          Mot de passe oublié ?
+        </a>
+      </div>
+
+      <div *ngIf="afficherFormulaireReset" class="reset-form">
+        <hr>
+        <label>Nouveau mot de passe</label>
+        <div class="reset-input-group">
+          <input type="password" [(ngModel)]="nouveauMdp" placeholder="••••••••">
+          <button (click)="reinitialiserMdp()" class="btn-secondary">Confirmer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="soutenances.length > 0" class="card results-card">
+    <div class="card-header d-flex justify-content-between">
+      <h3>
+        <i class="fa-solid fa-folder-open"></i> Mes Soutenances
+      </h3>
+      <span class="badge">{{ soutenances.length }} soutenance(s)</span>
+    </div>
+    
+    <div class="jury-name-section">
+      <i class="fa-solid fa-user"></i> Membre du jury : <strong>Salsabil Ben Salem</strong>
+    </div>
+
+    <div class="card-body">
+      <div class="grid-table">
+        <div class="grid-header">
+          <div class="col-num">#</div>
+          <div class="col-date"><i class="fa-solid fa-calendar-days"></i> Date</div>
+          <div class="col-projet"><i class="fa-solid fa-folder-open"></i> Projet</div>
+          <div class="col-note"><i class="fa-solid fa-star"></i> Note</div> 
+          <div class="col-statut"><i class="fa-solid fa-info-circle"></i> Statut</div> 
+        </div>
+
+        <div class="grid-body">
+          <div *ngFor="let s of soutenances; let i = index" class="grid-row">
+            <div class="col-num">{{ i + 1 }}</div>
+            <div class="col-date">{{ s.dateSoutenance | date:'dd/MM/yyyy' }}</div>
+            <div class="col-projet">{{ s.projet.titre }}</div>
+            
+            <div class="col-note">
+              <input type="number" [(ngModel)]="s.note" min="0" max="20" class="input-note"> 
+              <span class="unit">/20</span>
+            </div>
+            
+            <div class="col-statut">
+              <select [(ngModel)]="s.statut" class="select-statut">
+                <option value="En attente">En attente</option>
+                <option value="Validée">Validée</option>
+                <option value="Terminée">Terminée</option>
+              </select>
+              
+              <a *ngIf="s.rapportUrl" [href]="s.rapportUrl" target="_blank" class="btn-rapport">
+                <i class="fa-solid fa-file-pdf"></i>
+              </a>
+              
+              <button (click)="enregistrerModif(s)" class="btn-save" title="Enregistrer">
+                <i class="fa-solid fa-floppy-disk"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="soutenances.length === 0 && email !== ''" class="card empty-state text-center">
+    <p>Aucune soutenance trouvée pour cet email.</p>
+  </div>
+
+</div> ```

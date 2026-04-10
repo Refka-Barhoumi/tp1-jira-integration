@@ -1,0 +1,269 @@
+/* --- Global Container --- */
+.main-container {
+  max-width: 800px;
+  margin: 60px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  padding: 0 20px;
+}
+
+/* --- Base Card Styles --- */
+.card {
+  background: white;
+  border-radius: 16px; /* Arrondis prononcés comme sur l'image */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Ombre douce et moderne */
+  padding: 35px;
+  margin-bottom: 30px;
+  border: 1px solid #f0f3f5;
+}
+
+/* --- Card Header Section --- */
+.card-header {
+  margin-bottom: 25px;
+}
+
+.text-center { text-align: center; }
+.d-flex { display: flex; align-items: center; }
+.justify-content-between { justify-content: space-between; }
+
+/* --- Space Jury Card (Top Section) --- */
+.space-jury-card .header-icon {
+  font-size: 3.5rem; /* Icône du chapeau plus grande */
+  color: #0d2a4a; /* Couleur bleu foncé exacte */
+  margin-bottom: 15px;
+}
+
+.space-jury-card h2 {
+  color: #0d2a4a;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0 0 8px 0;
+}
+
+.space-jury-card p {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* --- Input Area --- */
+.card-body label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #f8fafc; /* Fond légèrement grisé pour l'input */
+  font-size: 1rem;
+  color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+input::placeholder {
+  color: #a0aec0;
+}
+
+input:focus {
+  border-color: #0d2a4a;
+  outline: none;
+  background-color: white;
+}
+
+/* --- Primary Blue Button --- */
+.btn-primary {
+  width: 100%;
+  padding: 16px;
+  background-color: #0d2a4a; /* Bleu foncé */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: background-color 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-primary:hover {
+  background-color: #1a3c61;
+}
+
+/* --- Results Card (Bottom Section) --- */
+.results-card {
+  border-top: 6px solid #0d2a4a; /* Barre bleue sur le dessus */
+}
+
+.results-card h3 {
+  color: #0d2a4a;
+  font-size: 1.4rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.results-card h3 i {
+  color: #a0aec0; /* Icône grise dans le titre */
+}
+
+.badge {
+  background-color: #edf2f7;
+  color: #4a5568;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.jury-name-section {
+  color: #4a5568;
+  font-size: 0.95rem;
+  margin: 20px 0 25px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+}
+
+.jury-name-section i {
+  color: #a0aec0;
+}
+
+/* --- Table (Grid) Design --- */
+.grid-table {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.grid-header {
+  display: flex;
+  background-color: #f8fafc;
+  padding: 15px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #4a5568;
+  border-bottom: 1px solid #e2e8f0;
+  gap: 15px;
+}
+
+.grid-header i {
+  color: #cbd5e0;
+  margin-right: 5px;
+}
+
+.grid-row {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid #edf2f7;
+  font-size: 0.95rem;
+  align-items: center;
+  gap: 15px;
+  transition: background-color 0.1s;
+}
+
+.grid-row:last-child { border-bottom: none; }
+.grid-row:hover { background-color: #fcfdfe; }
+
+/* Column Widths (copiés de l'image) */
+.col-num {
+  width: 8%;
+  color: #a0aec0;
+  text-align: center;
+}
+
+.col-date {
+  width: 30%;
+  color: #0d2a4a;
+  font-weight: 700;
+}
+
+.col-projet {
+  width: 62%;
+  color: #333;
+}
+.btn-rapport {
+    margin-left: 10px;
+    color: #d32f2f; /* Rouge pour le PDF */
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.btn-rapport:hover {
+    color: #ff0000;
+    transform: scale(1.1);
+}
+.input-note {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.select-statut {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.btn-save {
+    background: none;
+    border: none;
+    color: #3498db;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 1.1rem;
+}
+
+.btn-save:hover {
+    color: #2980b9;
+    transform: scale(1.2);
+}
+.reset-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.reset-link a {
+  font-size: 0.85rem;
+  color: #666;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.reset-link a:hover {
+  text-decoration: underline;
+  color: #3498db;
+}
+
+.reset-form hr {
+  margin: 15px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.btn-secondary {
+  background-color: #95a5a6;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px;
+}
